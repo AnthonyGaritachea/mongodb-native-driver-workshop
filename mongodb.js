@@ -102,10 +102,26 @@ MongoClient.connect(connectionUrl, {useNewUrlParser: true}, (error, client) => {
         //         console.log(error)
         //     })
 
-        db.collection('tasks').updateMany({completed: false}, {$set : {completed: true}})
+        // db.collection('tasks').updateMany({completed: false}, {$set : {completed: true}})
+        //     .then(results => {
+        //         console.log(results.modifiedCount)
+        //     }).catch(error => {
+        //         console.log(error)
+        //     });
+
+                // Delete 
+        // db.collection('tasks')
+        // .deleteOne({description: 'shop for groceries'})
+        // .then(results => {
+        //       console.log(results.deletedCount)
+        // }).catch(error => {
+        //     console.log(error)
+        // })
+        
+        db.collection('users').deleteMany({age: 28})
             .then(results => {
-                console.log(results.modifiedCount)
+                console.log(results.deletedCount)
             }).catch(error => {
                 console.log(error)
-            });
+            })
 });
