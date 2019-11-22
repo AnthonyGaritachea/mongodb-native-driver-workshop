@@ -9,7 +9,7 @@ MongoClient.connect(connectionUrl, {useNewUrlParser: true}, (error, client) => {
     }
    const db = client.db(database)
                      // CREATE
-                     
+
 //    db.collection('users').insertOne({
 //        name: 'Anthony',
 //        age: '22'
@@ -82,7 +82,30 @@ MongoClient.connect(connectionUrl, {useNewUrlParser: true}, (error, client) => {
     //     console.log(task)
     // });
 
-    db.collection('users').find({name: "Gunther"}).count((error, count) => {
-        console.log(count)
-    });
+    // db.collection('users').find({name: "Gunther"}).count((error, count) => {
+    //     console.log(count)
+    // });
+                    // Updating 
+        // db.collection('users').updateOne({
+        //     _id: new ObjectID("5dd71ffcc5e85359bf360109")},{ $set: {name: 'Raul'}})
+        //     .then(user => {
+        //         console.log(user)
+        //     }).catch(error => {
+        //         console.log(error)
+        //     });
+
+        // db.collection('users').updateOne({
+        //     _id: new ObjectID("5dd71ffcc5e85359bf360109")}, {$inc: {age: 1}})
+        //     .then(user => {
+        //         console.log(user)
+        //     }).catch(error => {
+        //         console.log(error)
+        //     })
+
+        db.collection('tasks').updateMany({completed: false}, {$set : {completed: true}})
+            .then(results => {
+                console.log(results.modifiedCount)
+            }).catch(error => {
+                console.log(error)
+            });
 });
